@@ -3,6 +3,9 @@ import globalHeader from './zh-CN/globalHeader';
 import menu from './zh-CN/menu';
 import settings from './zh-CN/settings';
 
+import register from "./zh-CN/register";
+import login from "./zh-CN/login";
+
 export default {
   'navBar.lang': '语言',
   'layout.user.link.help': '帮助',
@@ -15,4 +18,8 @@ export default {
   ...menu,
   ...settings,
   ...component,
+
+  ...login,
+  ...register,
+
 };

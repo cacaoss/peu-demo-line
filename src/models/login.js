@@ -36,8 +36,8 @@ const Model = {
             return;
           }
         }
-
-        history.replace(redirect || '/');
+        // 登录成功并且没有重定向参数时
+        history.replace(redirect || '/base/TestPage');
       }
     },
 

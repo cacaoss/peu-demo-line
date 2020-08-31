@@ -1,0 +1,72 @@
+export default {
+  // register
+  'userandregister.navBar.lang': '语言',
+  'userandregister.register.register': '注册',
+  'userandregister.register.sign-in': '使用已有账户登录',
+  'userandregister.register.get-verification-code': '获取验证码',
+
+  // placeholder
+  'userandregister.email.placeholder': '邮箱',
+  'userandregister.userName.placeholder': '请输入用户名',
+  'userandregister.password.placeholder': '至少6位密码，区分大小写',
+  'userandregister.confirm-password.placeholder': '确认密码',
+  'userandregister.phone-number.placeholder': '手机号',
+  'userandregister.verification-code.placeholder': '验证码',
+  'userandregister.title.placeholder': '给目标起个名字',
+  'userandregister.placeholder.start': '开始日期',
+  'userandregister.placeholder.end': '结束日期',
+  'userandregister.goal.placeholder': '请输入你的阶段性工作目标',
+  'userandregister.standard.placeholder': '请输入衡量标准',
+  'userandregister.client.placeholder': '请描述你服务的客户，内部客户直接 @姓名／工号',
+  'userandregister.invites.placeholder': '请直接 @姓名／工号，最多可邀请 5 人',
+  'userandregister.weight.placeholder': '请输入',
+  'userandregister.publicUsers.placeholder': '公开给',
+
+  // required
+  'userandregister.email.required': '请输入邮箱地址！',
+  'userandregister.userName.required': '请输入用户名!',
+  'userandregister.password.required': '请输入密码！',
+  'userandregister.confirm-password.required': '请确认密码！',
+  'userandregister.phone-number.required': '请输入手机号！',
+  'userandregister.verification-code.required': '请输入验证码！',
+  'userandregister.title.required': '请输入标题',
+  'userandregister.date.required': '请选择起止日期',
+  'userandregister.goal.required': '请输入目标描述',
+  'userandregister.standard.required': '请输入衡量标准',
+
+  // submit
+  'userandregister.email.wrong-format': '邮箱地址格式错误！',
+  'userandregister.password.twice': '两次输入的密码不匹配!',
+  'userandregister.strength.msg': '请至少输入 6 个字符。请不要使用容易被猜到的密码。',
+  'userandregister.strength.strong': '强度：强',
+  'userandregister.strength.medium': '强度：中',
+  'userandregister.strength.short': '强度：太短',
+  'userandregister.phone-number.wrong-format': '手机号格式错误！',
+  'userandregister.form.get-captcha': '获取验证码',
+  'userandregister.captcha.second': '秒',
+  'userandregister.form.optional': '（选填）',
+  'userandregister.form.submit': '提交',
+  'userandregister.form.save': '保存',
+
+  // others
+  'userandregister.public.label': '目标公开',
+  'userandregister.label.help': '客户、邀评人默认被分享',
+  'userandregister.radio.public': '公开',
+  'userandregister.radio.partially-public': '部分公开',
+  'userandregister.radio.private': '不公开',
+  'userandregister.title.label': '标题',
+  'userandregister.date.label': '起止日期',
+  'userandregister.goal.label': '目标描述',
+  'userandregister.weight.label': '权重',
+  'userandregister.standard.label': '衡量标准',
+  'userandregister.invites.label': '邀评人',
+  'userandregister.client.label': '客户',
+  'userandregister.label.tooltip': '目标的服务对象',
+  'userandregister.option.A': '同事甲',
+  'userandregister.option.B': '同事乙',
+  'userandregister.option.C': '同事丙',
+
+  // register-result
+  'userandregister-result.register-result.msg': '你的账户：{userName} 注册成功',
+  'userandregister-result.register-result.back-home': '返回首页',
+};
