@@ -67,12 +67,12 @@ export default defineConfig({
           routes: [
             {
               path:"/base",
-              redirect:"/base/TestPage"
+              redirect:"/base/SpacePage"
             },
             {
-              name: "test",
-              path: "/base/TestPage",
-              component: "./base/TestPage",
+              name: "spacePage",
+              path: "/base/SpacePage",
+              component: "./base/SpacePage",
             },
             {
               component: './404',

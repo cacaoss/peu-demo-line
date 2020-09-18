@@ -13,10 +13,10 @@ export default {
   'userandregister.login.forgot-password': '忘记密码',
 
   // required
-  'userandregister.login.userName.required':'请输入用户名！',
-  'userandregister.login.password.required':'请输入密码！',
+  'userandregister.login.userName.required':'请输入用户名',
+  'userandregister.login.password.required':'请输入密码',
 
   // submit
-  'userandregister.login.message-invalid-credentials': '账户或密码错误（admin/ant.design）',
+  'userandregister.login.message-invalid-credentials': '账户或密码错误',
   'userandregister.login.message-invalid-verification-code': '验证码错误',
 }

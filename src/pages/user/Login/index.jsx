@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {connect, Link, FormattedMessage, formatMessage} from "umi"
+import {connect, Link, FormattedMessage, useIntl} from "umi"
 import {Alert} from "antd";
 import LoginForm from "@/pages/user/Login/components/Login";
 import styles from "@/pages/user/Login/style.less";
@@ -17,7 +17,7 @@ const LoginMessage = ({content}) => (
 );
 
 const Login = props => {
-  console.log("LoginPage props：", props);
+  const { formatMessage } = useIntl();
   const {userLogin = {}, submitting} = props;
   const {status, type: loginType} = userLogin;
   const [type, setType] = useState('account');
@@ -48,7 +48,7 @@ const Login = props => {
           <UserName
             name="userName"
             placeholder={formatMessage({
-              id: 'userandregister.login.message-invalid-credentials',
+              id: 'userandregister.login.userName.required',
             })}
             autoComplete="off"
             rules={[
@@ -62,7 +62,9 @@ const Login = props => {
           />
           <Password
             name="password"
-            placeholder="密码: ant.design"
+            placeholder={formatMessage({
+              id: 'userandregister.login.password.required',
+            })}
             autoComplete="off"
             rules={[
               {

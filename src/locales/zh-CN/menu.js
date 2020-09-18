@@ -50,5 +50,5 @@ export default {
   'menu.editor.mind': '脑图编辑器',
   'menu.editor.koni': '拓扑编辑器',
 
-  'menu.test':'测试菜单',
+  'menu.spacePage':'库位展示',
 };
