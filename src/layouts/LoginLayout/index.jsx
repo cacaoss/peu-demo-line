@@ -28,7 +28,7 @@ const LoginLayout = props => {
     formatMessage,
     ...props,
   });
-  console.log("LoginLayout - props：",props)
+
   return (
     <HelmetProvider>
       <Helmet>
