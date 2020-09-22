@@ -5,6 +5,7 @@ import settings from './zh-CN/settings';
 
 import register from "./zh-CN/register";
 import login from "./zh-CN/login";
+import spaceDetail from "./zh-CN/spaceDetail";
 
 export default {
   'navBar.lang': '语言',
@@ -21,5 +22,5 @@ export default {
 
   ...login,
   ...register,
-
+  ...spaceDetail,
 };

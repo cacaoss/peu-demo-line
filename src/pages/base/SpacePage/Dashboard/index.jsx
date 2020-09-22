@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {PageContainer} from '@ant-design/pro-layout';
 import {List, Card, Typography, Space} from 'antd';
-import {connect} from "umi"
+import {connect, Link} from "umi"
 import styles from './style.less';
 
 const {Title, Text} = Typography;
@@ -12,7 +12,7 @@ const {Title, Text} = Typography;
     loading: loading.models.spaceList,
   })
 )
-class SpacePage extends Component {
+class Dashboard extends Component {
   componentDidMount() {
     this.timer = setInterval(() => this.getSpaceList(), 1000);
   }
@@ -31,13 +31,9 @@ class SpacePage extends Component {
     });
   }
 
-  cardClickHandle(id) {
-    console.log(id)
-  };
-
   render() {
     const {
-      spaceList : {resData}
+      spaceList: {resData}
     } = this.props;
 
     const bodyStyle = {
@@ -61,28 +57,33 @@ class SpacePage extends Component {
                 if (item && item.spaceName) {
                   return (
                     <List.Item key={item.spaceName}>
-                      <Card
-                        hoverable
-                        className={styles.card}
-                        bodyStyle={bodyStyle}
-                        onClick={() => this.cardClickHandle(item.spaceName)}
-                      >
-
-                        <Space direction="vertical" size={1}>
-                          <Title level={4}>{item.spaceDescribe}</Title>
-                          <Text strong>产品条码：{item.sn}</Text>
-                          <Text strong>产品类型：{item.model}</Text>
-                          <Text strong>产品状态：{item.spaceStatu}</Text>
-                          <Text strong>开始时间：{item.inputTime}</Text>
-                          <Text strong>测试耗时：{item.testTime} (s)</Text>
-                        </Space>
-                      </Card>
+                      <Link to={{
+                        pathname:"/base/SpacePage/SpaceDetail",
+                        query:{
+                          name:item.spaceName
+                        }
+                      }}>
+                        <Card
+                          hoverable
+                          className={styles.card}
+                          bodyStyle={bodyStyle}
+                        >
+                          <Space direction="vertical" size={1}>
+                            <Title level={4}>{item.spaceDescribe}</Title>
+                            <Text strong>产品条码：{item.sn}</Text>
+                            <Text strong>产品类型：{item.model}</Text>
+                            <Text strong>产品状态：{item.spaceStatu}</Text>
+                            <Text strong>开始时间：{item.inputTime}</Text>
+                            <Text strong>测试耗时：{item.testTime} (s)</Text>
+                          </Space>
+                        </Card>
+                      </Link>
                     </List.Item>
                   );
                 }
                 return null;
               }}
-            />):null
+            />) : null
           }
         </div>
       </PageContainer>
@@ -90,4 +91,4 @@ class SpacePage extends Component {
   }
 }
 
-export default SpacePage;
+export default Dashboard;

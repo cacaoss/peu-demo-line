@@ -51,4 +51,6 @@ export default {
   'menu.editor.koni': '拓扑编辑器',
 
   'menu.spacePage':'库位展示',
+  'menu.spacePage.Dashboard':'库位看板',
+  'menu.spacePage.Detail':'库位详情'
 };
