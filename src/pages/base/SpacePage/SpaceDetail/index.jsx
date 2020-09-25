@@ -15,6 +15,18 @@ const SpaceDetail = props => {
     },
   };
 
+  const {
+    spaceDetailItem: {
+      resData: spaceDetailItemResData
+    },
+    spaceDetail: {
+      resData: spaceDetailResData
+    }
+  } = props;
+
+  const [columns, setColumns] = useState([]);
+  const [dataSource, setDataSource] = useState([]);
+
   const checkOptions = [
     {label: '交流电压', value: 'acVoltage'},
     {label: '交流电流', value: 'acCurrent'},
@@ -35,9 +47,8 @@ const SpaceDetail = props => {
     {label: 'DC/DC温度3', value: 'dcDcTemp3'},
     {label: 'DC/DC温度4', value: 'dcDcTemp4'},
   ];
-  const defaultOptions = ["acVoltage", "acCurrent", "dcVoltage", "dcCurrent", "batteryVoltage"];
-
-  const initColums = [
+  const defaultSelectArray = [];
+  const defaultColums = [
     {
       title: "仓位描述",
       key: 'spaceDescribe',
@@ -49,867 +60,106 @@ const SpaceDetail = props => {
       dataIndex: 'spaceStatu',
     },
   ];
-  const [columns, setColumns] = useState(() => {
-    const defaultColumns = defaultOptions.map(item => ({title: getLabelByValue(item), key: item, dataIndex: item}));
-    defaultColumns.push({
-      title: "记录时间",
-      key: 'recordTime',
-      dataIndex: 'recordTime',
-    });
-    return [...initColums, ...defaultColumns];
-  });
 
-  const initDataSource = [
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-1",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-    {
-      key: "SA01-1",
-
-      spaceName: "SA01-1",
-      spaceDescribe: "SA01-3",
-      spaceStatu: "测试中",
-
-      acVoltage: "220V",
-      acCurrent: "17A",
-
-      dcVoltage: "360V",
-      dcCurrent: "14A",
-      batteryVoltage: "13.9A",
-
-      inSideTemp: "30",
-      ambientTemp: "40",
-      outSideTemp: "50",
-      boardTemp: "60",
-
-      dcDcInputVoltage: "370",
-      dcDcInputCurrent: "2A",
-      dcDcOutputVoltage: "14V",
-      dcDcOutputCurrent: "52.8A",
-      dcDcTemp3: "36.8",
-      dcDcTemp4: "40.5",
-      recordTime: "2020-09-22 16:15:15",
-    },
-  ];
-  const [dataSource, setDataSource] = useState(initDataSource);
+  useEffect(() => {
+    const {spaceName} = props.location.query;
+    getSpaceDetailItemByName(spaceName);
+  }, []);
+  useEffect(() => {
+    if (props.spaceDetailItem.resData) {
+      const {resultList} = props.spaceDetailItem.resData;
+      const flags = resultList[0];
+
+      Object.keys(flags).forEach(key => {
+        if (flags[key] === 1) {
+          defaultSelectArray.push(key);
+        }
+      });
+
+      form.setFieldsValue({
+        detailItems: defaultSelectArray
+      });
+
+      initColumn(defaultSelectArray);
+    }
+  }, [spaceDetailItemResData]);
+
+  useEffect(() => {
+    const {spaceName} = props.location.query;
+    getSpaceByName(spaceName);
+
+    const timer = setInterval(() => {
+      getSpaceByName(spaceName);
+    }, 5000);
+
+    return () => {
+      clearInterval(timer);
+    }
+  }, []);
+  useEffect(() => {
+    if (!spaceDetailResData) {
+      return;
+    }
+    const {resultList} = spaceDetailResData;
+    if (resultList) {
+      setDataSource(resultList);
+    }
+  }, [spaceDetailResData])
 
   const onValuesChange = changedValues => {
     const {detailItems} = changedValues;
-    const tempColumns = detailItems.map(item => ({title: getLabelByValue(item), key: item, dataIndex: item}));
+    setSpaceDetailItem(detailItems);
+
+    initColumn(detailItems);
+  };
+
+  function initColumn(newColumn) {
+    const tempColumns = newColumn.map(item => ({title: getLabelByValue(item), key: item, dataIndex: item}));
     tempColumns.push({
       title: "记录时间",
       key: 'recordTime',
       dataIndex: 'recordTime',
     });
-
-    setColumns([...initColums, ...tempColumns]);
-    setDataSource(initDataSource);
-  };
+    setColumns([...defaultColums, ...tempColumns]);
+  }
 
   function getLabelByValue(value) {
     return checkOptions.find(item => item.value === value).label;
   }
 
-  function getSpaceByName(name) {
+  function getSpaceDetailItemByName(spaceName) {
     const {dispatch} = props;
     dispatch({
-      type: 'spaceDetail/fetch',
+      type: 'spaceDetailItem/fetch',
       payload: {
-        name
+        spaceName
       },
     });
   }
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const {name} = props.location.query;
-      getSpaceByName(name);
-    }, 1000);
+  function setSpaceDetailItem(detailItems) {
+    const {dispatch} = props;
+    const {spaceName} = props.location.query;
 
-    return () => {
-      clearInterval(timer);
-    }
-  });
+    dispatch({
+      type: 'spaceDetailItem/setSpaceDetailItem',
+      payload: {
+        spaceName,
+        detailItems
+      },
+
+    });
+  }
+
+  function getSpaceByName(spaceName) {
+    const {dispatch} = props;
+    dispatch({
+      type: 'spaceDetail/fetch',
+      payload: {
+        spaceName
+      },
+    });
+  }
 
   return (
     <PageContainer>
@@ -919,11 +169,9 @@ const SpaceDetail = props => {
           form={form}
           name="detailForm"
           onValuesChange={onValuesChange}
-          initialValues={
-            {
-              detailItems: defaultOptions
-            }
-          }
+          initialValues={{
+            detailItems: defaultSelectArray
+          }}
         >
           <FormItem
             {...formItemLayout}
@@ -938,7 +186,7 @@ const SpaceDetail = props => {
           {
             defaultPageSize: 5,
             showSizeChanger: true,
-            pageSizeOptions:["5","10","50","100"],
+            pageSizeOptions: ["5", "10", "50", "100"],
             showTotal: (total) => {
               return `共 ${total} 条数据`;
             }
@@ -949,7 +197,8 @@ const SpaceDetail = props => {
   );
 };
 
-export default connect(({spaceDetail, loading}) => ({
+export default connect(({spaceDetailItem, spaceDetail, loading}) => ({
+  spaceDetailItem,
+  spaceDetail,
   loading: loading.models.spaceDetail,
-  spaceDetail
 }))(SpaceDetail);

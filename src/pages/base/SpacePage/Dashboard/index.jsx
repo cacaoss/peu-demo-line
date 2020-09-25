@@ -51,7 +51,7 @@ class Dashboard extends Component {
                 gutter: 16,
                 column: 3,
               }}
-              dataSource={[...resData.spaceList]}
+              dataSource={[...resData.resultList]}
 
               renderItem={item => {
                 if (item && item.spaceName) {
@@ -60,7 +60,7 @@ class Dashboard extends Component {
                       <Link to={{
                         pathname:"/base/SpacePage/SpaceDetail",
                         query:{
-                          name:item.spaceName
+                          spaceName:item.spaceName
                         }
                       }}>
                         <Card
