@@ -78,11 +78,25 @@ export default defineConfig({
                   component: './base/SpacePage/Dashboard',
                 },
                 {
+                  name: 'Wrapper',
+                  icon: 'smile',
+                  hideInMenu:true,
+                  path: '/base/SpacePage/Wrapper',
+                  component: './base/SpacePage/Wrapper',
+                },
+                {
                   name: 'Detail',
                   icon: 'smile',
                   hideInMenu:true,
                   path: '/base/SpacePage/SpaceDetail',
                   component: './base/SpacePage/SpaceDetail',
+                },
+                {
+                  name:'InputDialog',
+                  icon:'smile',
+                  hideInMenu:true,
+                  path: '/base/SpacePage/InputDialog',
+                  component: './base/SpacePage/InputDialog',
                 },
                 {
                   component: './404',

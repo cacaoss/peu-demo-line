@@ -52,5 +52,7 @@ export default {
 
   'menu.spacePage':'库位展示',
   'menu.spacePage.Dashboard':'库位看板',
-  'menu.spacePage.Detail':'库位详情'
+  'menu.spacePage.Detail':'库位详情',
+  'menu.spacePage.Wrapper':'包裹器',
+  'menu.spacePage.InputDialog':'输入框',
 };
