@@ -36,8 +36,6 @@ class Dashboard extends Component {
     } else if (data.action.toLowerCase() === "unlock") {
       this.setSpaceEnable(data.name);
     }
-
-    console.log(`${data.name} 执行 ${data.action.toLowerCase()}`)
   };
 
   getSpaceList() {
@@ -78,6 +76,23 @@ class Dashboard extends Component {
         spaceName
       },
     });
+  }
+
+  calcClassName(item) {
+    let className = styles.card;
+
+    if (item.spaceStatu === "就绪") {
+      className = `${styles.card} ${styles.ready}`;
+    } else if (item.spaceStatu === "测试中") {
+      className = `${styles.card} ${styles.running}`;
+    } else if (item.spaceStatu === "测试成功") {
+      className = `${styles.card} ${styles.pass}`;
+    } else if (item.spaceStatu === "测试失败") {
+      className = `${styles.card} ${styles.fail}`;
+    } else if ((item.spaceStatu === "手动禁用") || (item.spaceStatu === "程序禁用")) {
+      className = `${styles.card} ${styles.disable}`;
+    }
+    return className;
   }
 
   render() {
@@ -122,11 +137,12 @@ class Dashboard extends Component {
                         }}>
                           <Card
                             hoverable
-                            className={styles.card}
+                            className={this.calcClassName(item)}
                             bodyStyle={bodyStyle}>
                             <Space direction="vertical" size={1}>
                               <Title level={4}>{item.spaceDescribe}</Title>
-                              <Text strong>产品条码：{item.sn}</Text>
+                              <Text strong>产品条码：{item.productSn}</Text>
+                              <Text strong>产品条码：{item.traySn}</Text>
                               <Text strong>产品类型：{item.productType}</Text>
                               <Text strong>产品状态：{item.spaceStatu}</Text>
                               <Text strong>开始时间：{item.inputTime}</Text>
