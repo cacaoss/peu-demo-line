@@ -3,17 +3,10 @@ import {queryCurrent, queryUsers} from '@/services/user';
 const UserModel = {
   namespace: 'user',
   state: {
+    resData: null,
     currentUser: {},
   },
   effects: {
-    * fetchUser(_, {call, put}) {
-      const response = yield call(queryUsers);
-      yield put({
-        type: 'save',
-        payload: response,
-      });
-    },
-
     * fetchCurrent(_, {call, put}) {
       const response = yield call(queryCurrent);
       yield put({
@@ -21,10 +14,20 @@ const UserModel = {
         payload: response,
       });
     },
+    * fetchUsers(_, {call, put}) {
+      const response = yield call(queryUsers);
+      yield put({
+        type: 'saveUsers',
+        payload: response,
+      });
+    },
   },
   reducers: {
     saveCurrentUser(state, action) {
       return {...state, currentUser: action.payload || {}};
+    },
+    saveUsers(state, action) {
+      return {...state, resData: action.payload};
     },
 
     changeNotifyCount(

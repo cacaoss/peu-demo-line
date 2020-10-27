@@ -8,6 +8,10 @@ const genList = (current, pageSize) => {
   for (let i = 0; i < pageSize; i += 1) {
     const index = (current - 1) * 10 + i;
     tableListDataSource.push({
+      userName:index,
+      userLevel:1,
+      createTime:"2020-10-28 14:00:00",
+
       key: index,
       disabled: i % 6 === 0,
       href: 'https://ant.design',
@@ -30,7 +34,7 @@ const genList = (current, pageSize) => {
   return tableListDataSource;
 };
 
-let tableListDataSource = genList(1, 100);
+let tableListDataSource = genList(1, 10);
 
 function getRule(req, res, u) {
   let realUrl = u;

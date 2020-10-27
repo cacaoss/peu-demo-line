@@ -104,6 +104,28 @@ export default defineConfig({
               ]
             },
             {
+              name: 'settingPage',
+              path: '/base/Setting',
+              routes:[
+                {
+                  name: 'UserSetting',
+                  icon: 'smile',
+                  path: '/base/Setting/UserSetting',
+                  component: './base/Setting/UserSetting',
+                },
+                {
+                  name: 'IpSetting',
+                  icon: 'smile',
+                  path: '/base/Setting/IpSetting',
+                  component: './base/Setting/IpSetting',
+                },
+
+                {
+                  component: './404',
+                },
+              ]
+            },
+            {
               component: './404',
             },
           ],

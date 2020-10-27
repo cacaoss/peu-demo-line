@@ -39,7 +39,7 @@ const menuDataRender = menuList =>
 
 const defaultFooterDom = (
   <DefaultFooter
-    copyright={ "光彩凯宜电子开发有限公司" }
+    copyright= "光彩凯宜电子开发有限公司"
   />
 );
 

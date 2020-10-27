@@ -55,4 +55,9 @@ export default {
   'menu.spacePage.Detail':'库位详情',
   'menu.spacePage.Wrapper':'包裹器',
   'menu.spacePage.InputDialog':'输入框',
+
+
+  'menu.settingPage':'设置',
+  'menu.settingPage.UserSetting':'用户设置',
+  'menu.settingPage.IpSetting':'IP 设置',
 };
