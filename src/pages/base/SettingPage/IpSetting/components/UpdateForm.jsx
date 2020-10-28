@@ -6,16 +6,18 @@ const UpdateForm = props => {
   const [form] = Form.useForm();
 
   useEffect(() => {
-    console.log(oldValues)
     form.setFieldsValue({
-      userName: oldValues.userName
+      deviceName: oldValues.deviceName,
+      deviceDesc: oldValues.deviceDesc,
+      deviceIp: oldValues.deviceIp,
+      devicePort: oldValues.devicePort,
     })
   }, [oldValues]);
 
   return (
     <Modal
       destroyOnClose
-      title="修改用户"
+      title="修改IP配置"
       visible={modalVisible}
       onCancel={() => onCancel()}
       footer={null}
@@ -26,19 +28,32 @@ const UpdateForm = props => {
         onFinish={values => onSubmit({...oldValues, ...values})}
       >
         <Form.Item
-          label="用户名"
-          name="userName"
-          rules={[{required: true, message: "用户名不能为空"}]}
+          label="设备名"
+          name="deviceName"
+          rules={[{required: true, message: "设备名不能为空"}]}
         >
           <Input/>
         </Form.Item>
-
         <Form.Item
-          label="新密码"
-          name="userPassword"
-          rules={[{required: true, message: "密码不能为空"}]}
+          label="描述信息"
+          name="deviceDesc"
+          rules={[{required: true, message: "描述信息不能为空"}]}
         >
-          <Input.Password/>
+          <Input/>
+        </Form.Item>
+        <Form.Item
+          label="IP"
+          name="deviceIp"
+          rules={[{required: true, message: "IP不能为空"}]}
+        >
+          <Input/>
+        </Form.Item>
+        <Form.Item
+          label="端口"
+          name="devicePort"
+          rules={[{required: true, message: "端口不能为空"}]}
+        >
+          <Input/>
         </Form.Item>
 
         <Form.Item>

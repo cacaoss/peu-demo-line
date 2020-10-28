@@ -105,19 +105,19 @@ export default defineConfig({
             },
             {
               name: 'settingPage',
-              path: '/base/Setting',
+              path: '/base/SettingPage',
               routes:[
                 {
                   name: 'UserSetting',
                   icon: 'smile',
-                  path: '/base/Setting/UserSetting',
-                  component: './base/Setting/UserSetting',
+                  path: '/base/SettingPage/UserSetting',
+                  component: './base/SettingPage/UserSetting',
                 },
                 {
                   name: 'IpSetting',
                   icon: 'smile',
-                  path: '/base/Setting/IpSetting',
-                  component: './base/Setting/IpSetting',
+                  path: '/base/SettingPage/IpSetting',
+                  component: './base/SettingPage/IpSetting',
                 },
 
                 {
